@@ -5,10 +5,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('products.urls')),
+    path('', include('app.urls')),
     
     path('profile', include('authentication.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-handler404 = 'products.views.handler404'
-handler500 = 'products.views.handler500'
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+handler404 = 'app.views.handler404'
+handler500 = 'app.views.handler500'
