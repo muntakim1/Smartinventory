@@ -34,53 +34,65 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
-            <a class="nav-link" href="./dashboard.html">
+            <a class="nav-link" href="{% url 'dashboard' %}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
+            <a class="nav-link" href="{% url 'profile' %}">
               <i class="material-icons">person</i>
-              <p>User Profile</p>
+              <p>Users</p>
+            </a>
+          </li>
+          <li class="nav-item dropright">
+            <a class="nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <i class="material-icons">add_shopping_cart</i><p>Product</p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item nav-link" href="{% url 'category' %}">Category</a>
+              <a class="dropdown-item nav-link" href="{% url 'brand' %}">Brand</a>
+              <a class="dropdown-item nav-link" href="{% url 'product' %}">Product</a>
+            </div>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./tables.html">
+              <i class="material-icons">content_paste</i>
+              <p>Sales</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./tables.html">
               <i class="material-icons">content_paste</i>
-              <p>Table List</p>
+              <p>Purchases</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./tables.html">
+              <i class="material-icons">content_paste</i>
+              <p>Orders</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./typography.html">
               <i class="material-icons">library_books</i>
-              <p>Typography</p>
+              <p>Reports</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./icons.html">
               <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
+              <p>Company Profile</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./map.html">
               <i class="material-icons">location_ons</i>
-              <p>Maps</p>
+              <p>Shops</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./rtl.html">
-              <i class="material-icons">language</i>
-              <p>RTL Support</p>
-            </a>
-          </li>
+       
+   
           
         </ul>
       </div>
@@ -141,10 +153,10 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">Profile</a>
-                  <a class="dropdown-item" href="#">Settings</a>
+                  <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                  
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Log out</a>
+                  <a class="dropdown-item" href="">Log out</a>
                 </div>
               </li>
             </ul>

@@ -6,9 +6,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
-    
-    path('profile', include('authentication.urls')),
+    path('products/', include('products.urls')),
+    path('transactions/', include('transaction.urls')),
+    path('profile/', include('authentication.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-handler404 = 'app.views.handler404'
-handler500 = 'app.views.handler500'
