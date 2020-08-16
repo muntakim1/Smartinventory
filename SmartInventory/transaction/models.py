@@ -1,6 +1,7 @@
 from django.db import models
 from products.models import  Product
 from authentication.models import ShopProfile
+import datetime
 # Create your models here.
 
 class Order(models.Model):
@@ -8,6 +9,7 @@ class Order(models.Model):
     Customer_address = models.CharField(max_length=255)
     Customer_phone   = models.CharField(max_length=25)
     Customer_country = models.CharField(max_length=255)
+    date=models.DateField(default=datetime.date.today)
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
     qty = models.IntegerField()
     Rate = models.DecimalField(max_digits=20,decimal_places=2)
@@ -20,6 +22,7 @@ class Purchases (models.Model):
     Seller_address = models.CharField(max_length=255)
     Seller_phone = models.CharField(max_length=25)
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    date=models.DateField(default=datetime.date.today)
     qty = models.IntegerField()
     Rate = models.DecimalField(max_digits=20,decimal_places=2)
     amount = models.DecimalField(max_digits=20,decimal_places=2)
@@ -30,6 +33,7 @@ class Sales(models.Model):
     Shop = models.ForeignKey(ShopProfile,on_delete=models.CASCADE)
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
     qty = models.IntegerField()
+    date=models.DateField(default=datetime.date.today)
     Rate = models.DecimalField(max_digits=20,decimal_places=2)
     amount = models.DecimalField(max_digits=20,decimal_places=2)
     total_ammount = models.DecimalField(max_digits=20,decimal_places=2)

@@ -363,7 +363,8 @@ md = {
       }
 
       var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
-
+      var websiteViewsChart1 = new Chartist.Line('#websiteViewsChart1',dataCompletedTasksChart,optionsCompletedTasksChart)
+      md.startAnimationForLineChart(websiteViewsChart1)
       // start animation for the Completed Tasks Chart - Line Chart
       md.startAnimationForLineChart(completedTasksChart);
 
@@ -373,7 +374,7 @@ md = {
       var dataWebsiteViewsChart = {
         labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
         series: [
-          [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
+          [542, 443, 320, 780, 553, 453, 26, 434, 68, 610, 756, 895]
 
         ]
       };
