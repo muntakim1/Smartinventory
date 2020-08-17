@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'app',
     'products',
     'authentication',
@@ -83,7 +84,7 @@ WSGI_APPLICATION = 'SmartInventory.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-
+LOGIN_REDIRECT_URL = 'index'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

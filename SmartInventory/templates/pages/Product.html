@@ -2,7 +2,94 @@
 
 <div class="content">
     <div class="container-fluid">
+        <div class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header card-header-primary">
+                        <h4 class="card-title">Add/Edit Category</h4>
+                        <p class="card-category">Complete Category</p>
+                      </div>
+                      <div class="card-body">
+                        
+                         
+                              <!-- Display Form -->
+                              <form method="POST" action="{% url 'product' %}">
+                              {% csrf_token %}
+                              {{ form.as_p }}                     
 
+                              <button id="submit" type="submit" class="btn btn-primary pull-right">Add</button>
+                          <div class="clearfix"></div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header card-header-primary">
+                      <h4 class="card-title ">Product Category</h4>
+                      <p class="card-category"> Collection of products we have</p>
+                      <div class="col-md-3 pull-right">
+                        <div class="form-group" >
+                          <label class="bmd-label-floating">Search</label>
+                          <input type="text" id="search" class="form-control" style="color:white">
+                        </div>
+                      </div>
+                          <div class="clearfix"></div>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead class=" text-primary">
+                            
+                            <th>
+                              Serail No.
+                            </th>
+                            <th>
+                              Product Name
+                            </th>
+                            <th>
+                              Brand
+                            </th>
+                            <th>
+                              Category
+                            </th>
+                            <th>
+                              Slug
+                            </th>
+                            <th>
+                              Available
+                            </th>
+                            <th>
+                              Color
+                            </th>
+                            <th>
+                              Description
+                            </th>
+                            <th>
+                              Images
+                            </th>
+                            <th>
+                              Price
+                            </th>
+                            <th>
+                              Quantity
+                            </th>
+                            <th>
+                              Size
+                            </th>
+                          </thead>
+                          <tbody id="productTable">
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
     </div>
 </div>
 

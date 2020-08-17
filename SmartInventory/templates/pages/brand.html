@@ -1,0 +1,73 @@
+{% include 'header/header.html' %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header card-header-primary">
+                        <h4 class="card-title">Add/Edit Brand</h4>
+                        <p class="card-category">Complete Brand</p>
+                      </div>
+                      <div class="card-body">
+                        <form>
+                          <div class="row">
+                            <div class="col-md-5">
+                              <div class="form-group">
+                                <label class="bmd-label-floating">Brand</label>
+                                <input type="text" id="brand" class="form-control" required>
+                              </div>
+                            </div>
+                             
+                           
+                         
+                          <button id="submit" type="submit" class="btn btn-primary pull-right">Add</button>
+                          <div class="clearfix"></div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header card-header-primary">
+                      <h4 class="card-title ">Product Brands</h4>
+                      <p class="card-category"> Collection of brands we have</p>
+                      <div class="col-md-3 pull-right">
+                        <div class="form-group" >
+                          <label class="bmd-label-floating">Search</label>
+                          <input type="text" id="search" class="form-control" style="color:white">
+                        </div>
+                      </div>
+                          <div class="clearfix"></div>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead class="text-primary">
+                            <th>
+                              Serial No.
+                            </th>
+                            <th>
+                              Brand
+                            </th>
+                            <th>
+                              Slug
+                            </th>
+                            
+                          </thead>
+                          <tbody id="brandData">
+                           
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    </div>
+</div>
+
+{% include 'footer/footer.html' %}

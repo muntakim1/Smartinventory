@@ -4,10 +4,14 @@ from django.db import models
 class Category(models.Model):
     Category_Name = models.CharField(max_length=255)
     Slug = models.SlugField(max_length=255)
+    def __str__(self):
+       return self.Category_Name
 
 class Brand(models.Model):
-    Category_Name = models.CharField(max_length=255)
+    brand_Name = models.CharField(max_length=255)
     Slug = models.SlugField(max_length=255)
+    def __str__(self):
+       return self.brand_Name
     
 class Product (models.Model):
     Product_Name = models.CharField(max_length=255)
@@ -21,3 +25,5 @@ class Product (models.Model):
     Brand= models.ForeignKey(Brand,on_delete=models.CASCADE)
     size = models.CharField(max_length=4)
     available = models.BooleanField()
+    def __str__(self):
+       return self.Product_Name

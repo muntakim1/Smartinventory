@@ -16,3 +16,7 @@ def purchase(requests):
 def sales(requests):
     return render(requests,'pages/Sales.html')
     
+
+def Reports(requests):
+    return render(requests,'pages/reports.html')
+    
