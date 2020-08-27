@@ -11,10 +11,12 @@ def login_view(requests):
     username= requests.GET.get('username')
     password = requests.GET.get('password')
     
-    user = authenticate(username=username, password=password)
+    user = authenticate(username=username, password=password) 
     if requests.is_ajax():
         if user is not None :
-            login(requests, user)
+            if user.is_active:
+                requests.session.set_expiry(86400)
+                login(requests, user)
             return HttpResponse('fine')
         else:
             return HttpResponse('bad')

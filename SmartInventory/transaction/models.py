@@ -15,6 +15,7 @@ class Order(models.Model):
     Rate = models.DecimalField(max_digits=20,decimal_places=2)
     amount = models.DecimalField(max_digits=20,decimal_places=2)
     total_ammount = models.DecimalField(max_digits=20,decimal_places=2)
+
     paid_status = models.BooleanField()
 
 class Purchases (models.Model):

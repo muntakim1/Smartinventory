@@ -1,9 +1,112 @@
+{% load static %}
 {% include 'header/header.html' %}
 
 <div class="content">
     <div class="container-fluid">
-
+        <button class="btn btn-primary" onclick="print()"> Print</button>
+        <div class="invoice-box">
+            <table cellpadding="0" cellspacing="0">
+                <tr class="top">
+                    <td colspan="2">
+                        <table>
+                            <tr>
+                                <td class="title">
+                                    <img src="{% static 'assets/img/new_logo.png' %}" style="width:100%; max-width:300px;">
+                                </td>
+                                
+                                <td>
+                                    Invoice #: <span id="invoiceNumber"></span><br>
+                                    Created: <script>var today = new Date();
+                                        var dd = String(today.getDate()).padStart(2, '0');
+                                        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+                                        var yyyy = today.getFullYear();
+                                        
+                                        today = mm + '/' + dd + '/' + yyyy;
+                                        document.write(today);</script><br>
+                                    Due: <span id="duedate"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                
+                <tr class="information">
+                    <td colspan="2">
+                        <table>
+                            <tr>
+                                <td>
+                                    SmartInventory, Inc.<br>
+                                    12345 Beily Road<br>
+                                    Dhaka, DHAKA-1200, BANGLADESH
+                                </td>
+                                
+                                <td>
+                                    <span id="name"></span><br>
+                                    <span id="address"></span><br>
+                                    <span id="phone"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                
+                <tr class="heading">
+                    <td>
+                        Payment Method
+                    </td>
+                    
+                    <td>
+                        Check #
+                    </td>
+                </tr>
+                
+                <tr class="details">
+                    <td>
+                        Check
+                    </td>
+                    
+                    <td>
+                        1000
+                    </td>
+                </tr>
+                
+                <tr class="heading">
+                    <td>
+                        Item
+                    </td>
+                    <td>
+                        Quantity
+                    </td>
+                    <td>
+                        Price
+                    </td>
+                </tr>
+                
+                <tr class="item last">
+                    <td>
+                       <span id="product_name"></span> 
+                    </td>
+                    <td >
+                      <span id="total_quantity"></span>  
+                    </td>
+                    <td>
+                        $<span id="rate"></span>
+                    </td>
+                </tr>
+                
+                
+                
+                <tr class="total">
+                    <td></td>
+                    
+                    <td>
+                        Total: $<span id="total_price"></span>  
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
 
 {% include 'footer/footer.html' %}
+

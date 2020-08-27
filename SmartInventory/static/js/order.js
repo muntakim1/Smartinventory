@@ -44,9 +44,10 @@ $(document).ready(function (){
 
                 }
                 
-                k+= '<td>' + '<button onclick="Productedit('+mainObj[i]["pk"]+')" type="button" class="btn btn-primary bmd-btn-icon"><i class="material-icons">edit</i></button>' + '</td>';
-                k+= '<td>' + '<button onclick="ProductDelete('+mainObj[i]["pk"]+')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">delete</i></button>' + '</td>';
+                k+= '<td>' + '<button onclick="Orderedit('+mainObj[i]["pk"]+')" type="button" class="btn btn-primary bmd-btn-icon"><i class="material-icons">edit</i></button>' + '</td>';
+                k+= '<td>' + '<button onclick="OrderDelete('+mainObj[i]["pk"]+')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">delete</i></button>' + '</td>';
                 
+                k+= '<td>' + '<button onclick="OrderInvoice('+mainObj[i]["pk"]+',\'purchase\')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">report</i></button>' + '</td>';
 
 
                 k+= '</tr>';
@@ -62,7 +63,9 @@ $(document).ready(function (){
 })
 
 
-
+function OrderInvoice(id,value){
+    window.location= '/transactions/order/'+id+"/"+value;
+}
 function Export(){
     $("table").tableToCSV()
 }
@@ -114,8 +117,9 @@ $('#submit').click(function(){
 
                 }
                 
-                k+= '<td>' + '<button onclick="Productedit('+mainObj[i]["pk"]+')" type="button" class="btn btn-primary bmd-btn-icon"><i class="material-icons">edit</i></button>' + '</td>';
-                k+= '<td>' + '<button onclick="ProductDelete('+mainObj[i]["pk"]+')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">delete</i></button>' + '</td>';
+                k+= '<td>' + '<button onclick="Orderedit('+mainObj[i]["pk"]+')" type="button" class="btn btn-primary bmd-btn-icon"><i class="material-icons">edit</i></button>' + '</td>';
+                k+= '<td>' + '<button onclick="OrderDelete('+mainObj[i]["pk"]+')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">delete</i></button>' + '</td>';
+                k+= '<td>' + '<button onclick="OrderInvoice('+mainObj[i]["pk"]+',\'purchase\')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">report</i></button>' + '</td>';
                 
 
 

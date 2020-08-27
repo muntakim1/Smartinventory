@@ -120,6 +120,16 @@ def delete_sales(requests,pk):
     Sales.objects.filter(pk=pk).delete()
     return redirect('sales')
 
+def Invoice(requests,pk,value):
+    product_obj=Product.objects.all().values_list('pk','Product_Name')
+    product = [x for x in product_obj ]
+    shop_obj=ShopProfile.objects.all().values_list('pk','shop_name')
+    shop = [x for x in shop_obj ]
+    if(value=='purchase'):
+        if requests.is_ajax():
+            purchase = serializers.serialize("json", [Purchases.objects.get(pk=pk)], ensure_ascii=False)
+            return JsonResponse({'invoice':purchase,'products':product})
+    return render(requests,'pages/invoice.html')
 def Reports(requests):
 
     return render(requests,'pages/reports.html')

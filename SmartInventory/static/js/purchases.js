@@ -46,7 +46,8 @@ $(document).ready(function (){
                 k+= '<td>' + '<button onclick="purchaseEdit('+mainObj[i]["pk"]+')" type="button" class="btn btn-primary bmd-btn-icon"><i class="material-icons">edit</i></button>' + '</td>';
                 k+= '<td>' + '<button onclick="purchaseDelete('+mainObj[i]["pk"]+')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">delete</i></button>' + '</td>';
                 
-
+                k+= '<td>' + '<button id="invoice" onclick="PurchaseInvoice('+mainObj[i]["pk"]+',\'purchase\')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">report</i></button>' + '</td>';
+                
 
                 k+= '</tr>';
             } 
@@ -60,7 +61,10 @@ $(document).ready(function (){
 
 })
 
-
+function PurchaseInvoice(id,value){
+    window.location = '/transactions/invoice/'+id+'/'+value;
+    url='/transactions/invoice/'+id+'/'+value;
+}
 
 function Export(){
     $("table").tableToCSV()
@@ -115,7 +119,7 @@ $('#submit').click(function(){
                 
                 k+= '<td>' + '<button onclick="purchaseEdit('+mainObj[i]["pk"]+')" type="button" class="btn btn-primary bmd-btn-icon"><i class="material-icons">edit</i></button>' + '</td>';
                 k+= '<td>' + '<button onclick="purchaseDelete('+mainObj[i]["pk"]+')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">delete</i></button>' + '</td>';
-                
+                k+= '<td>' + '<button onclick="PurchaseInvoice('+mainObj[i]["pk"]+',\'purchase\')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">report</i></button>' + '</td>';
 
 
                 k+= '</tr>';

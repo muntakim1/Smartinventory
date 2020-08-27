@@ -1,3 +1,4 @@
+
 $(document).ready(function (){
     
     $('input').addClass('form-control')
@@ -125,8 +126,6 @@ $('#submit').click(function(){
                 k+= '<td>' + '<button onclick="Salesedit('+mainObj[i]["pk"]+')" type="button" class="btn btn-primary bmd-btn-icon"><i class="material-icons">edit</i></button>' + '</td>';
                 k+= '<td>' + '<button onclick="SalesDelete('+mainObj[i]["pk"]+')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">delete</i></button>' + '</td>';
                 
-
-
                 k+= '</tr>';
             } 
             k+='</tbody>';

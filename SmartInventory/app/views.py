@@ -9,6 +9,12 @@ def index(request):
     
 @login_required(login_url='/profile/login')
 def dashboard(requests):
+    
+
+
+
+
+
     return render(requests,'pages/dashboard.html')
 
 def shop(requests):
