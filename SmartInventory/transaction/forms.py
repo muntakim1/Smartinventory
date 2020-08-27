@@ -7,9 +7,9 @@ class PurchaseForm(forms.ModelForm):
         fields = '__all__'
 class SalesForm(forms.ModelForm):
     class Meta:
-        model = Purchases
+        model = Sales
         fields = '__all__'
 class OrderForm(forms.ModelForm):
     class Meta:
-        model = Purchases
+        model = Order
         fields = '__all__'

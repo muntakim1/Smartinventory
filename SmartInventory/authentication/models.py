@@ -26,6 +26,7 @@ class CompanyProfile(models.Model):
     
 class ShopProfile(models.Model):
     Manager_name= models.CharField(default="", max_length=50)
+    shop_name   = models.CharField(default="",max_length=255)
     address     = models.TextField(default="")
     country     = models.CharField(default="",max_length=50)
     city        = models.CharField(default="",max_length=50)
