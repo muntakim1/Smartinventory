@@ -1,0 +1,32 @@
+{% include 'header/header.html' %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header card-header-primary">
+                        <h4 class="card-title">Add/Edit Purchases</h4>
+                        <p class="card-category">Complete Purchases</p>
+                      </div>
+                      <div class="card-body">
+                        <form method="POST">
+                          {% csrf_token %}
+                          {{ form.as_p }} 
+                                            
+                        
+                          <button id="submit" type="submit" class="btn btn-primary pull-right">Update</button>
+                          <div class="clearfix"></div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            </div>
+    </div>
+    </div>
+    
+{% include 'footer/footer.html' %}

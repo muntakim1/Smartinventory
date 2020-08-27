@@ -8,24 +8,14 @@
                 <div class="col-md-12">
                     <div class="card">
                       <div class="card-header card-header-primary">
-                        <h4 class="card-title">Add/Edit Category</h4>
-                        <p class="card-category">Complete Category</p>
+                        <h4 class="card-title">Add/Edit Sales</h4>
+                        <p class="card-category">Complete Sales</p>
                       </div>
                       <div class="card-body">
                         <form>
-                          <div class="row">
-                            <div class="col-md-5">
-                              <div class="form-group">
-                                <label class="bmd-label-floating">Category</label>
-                                <input type="text" class="form-control" required>
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                <label class="bmd-label-floating">Slug</label>
-                                <input type="text" class="form-control" required>
-                              </div>
-                            </div>
+                          <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }} 
                            
                          
                           <button type="submit" class="btn btn-primary pull-right">Add</button>
@@ -39,8 +29,10 @@
                 <div class="col-md-12">
                   <div class="card">
                     <div class="card-header card-header-primary">
-                      <h4 class="card-title ">Product Category</h4>
-                      <p class="card-category"> Collection of products we have</p>
+                      <h4 class="card-title ">Product Sales</h4>
+                      <p class="card-category"> Sales transactions </p>
+                      <button onclick="Export()" class="btn btn-white pull-left" style="color: #9c27b0;">Export</button>
+
                       <div class="col-md-3 pull-right">
                         <div class="form-group" >
                           <label class="bmd-label-floating">Search</label>
@@ -67,109 +59,8 @@
                               Salary
                             </th>
                           </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                1
-                              </td>
-                              <td>
-                                Dakota Rice
-                              </td>
-                              <td>
-                                Niger
-                              </td>
-                              <td>
-                                Oud-Turnhout
-                              </td>
-                              <td class="text-primary">
-                                $36,738
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                2
-                              </td>
-                              <td>
-                                Minerva Hooper
-                              </td>
-                              <td>
-                                Curaçao
-                              </td>
-                              <td>
-                                Sinaai-Waas
-                              </td>
-                              <td class="text-primary">
-                                $23,789
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                3
-                              </td>
-                              <td>
-                                Sage Rodriguez
-                              </td>
-                              <td>
-                                Netherlands
-                              </td>
-                              <td>
-                                Baileux
-                              </td>
-                              <td class="text-primary">
-                                $56,142
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                4
-                              </td>
-                              <td>
-                                Philip Chaney
-                              </td>
-                              <td>
-                                Korea, South
-                              </td>
-                              <td>
-                                Overland Park
-                              </td>
-                              <td class="text-primary">
-                                $38,735
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                5
-                              </td>
-                              <td>
-                                Doris Greene
-                              </td>
-                              <td>
-                                Malawi
-                              </td>
-                              <td>
-                                Feldkirchen in Kärnten
-                              </td>
-                              <td class="text-primary">
-                                $63,542
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                6
-                              </td>
-                              <td>
-                                Mason Porter
-                              </td>
-                              <td>
-                                Chile
-                              </td>
-                              <td>
-                                Gloucester
-                              </td>
-                              <td class="text-primary">
-                                $78,615
-                              </td>
-                            </tr>
+                          <tbody id="SalesTable">
+                           
                           </tbody>
                         </table>
                       </div>

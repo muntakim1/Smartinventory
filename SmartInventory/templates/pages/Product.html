@@ -8,14 +8,14 @@
                 <div class="col-md-12">
                     <div class="card">
                       <div class="card-header card-header-primary">
-                        <h4 class="card-title">Add/Edit Category</h4>
+                        <h4 class="card-title">Add Category</h4>
                         <p class="card-category">Complete Category</p>
                       </div>
                       <div class="card-body">
                         
                          
                               <!-- Display Form -->
-                              <form method="POST" action="{% url 'product' %}">
+                              <form method="POST" action="{% url 'product' %}" enctype="multipart/form-data">
                               {% csrf_token %}
                               {{ form.as_p }}                     
 
@@ -32,6 +32,7 @@
                     <div class="card-header card-header-primary">
                       <h4 class="card-title ">Product Category</h4>
                       <p class="card-category"> Collection of products we have</p>
+                      <button onclick="Export()" class="btn btn-white pull-left" style="color: #9c27b0;">Export</button>
                       <div class="col-md-3 pull-right">
                         <div class="form-group" >
                           <label class="bmd-label-floating">Search</label>

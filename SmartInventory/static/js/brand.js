@@ -18,6 +18,8 @@ $('#submit').click(function (){
                         k+='<td>' + (i+1) + '</td>';
                         k+= '<td>' + mainObj[i]["fields"]["brand_Name"] + '</td>';
                         k+= '<td>' + mainObj[i]["fields"]["Slug"] + '</td>';
+                        k+= '<td>' + '<button onclick="brandedit('+mainObj[i]["pk"]+')" type="button" class="btn btn-primary bmd-btn-icon"><i class="material-icons">edit</i></button>' + '</td>';
+                        k+= '<td>' + '<button onclick="brandDelete('+mainObj[i]["pk"]+')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">delete</i></button>' + '</td>';
                         k+= '</tr>';
                     }
                     k+='</tbody>';
@@ -27,7 +29,18 @@ $('#submit').click(function (){
              }
         )
 })
+
+function brandedit(id){
+
+    window.location= 'brand/'+id;
+}
+
+function brandDelete(id){
+
+    window.location= 'brand/'+id+'/delete';
+}
 $(document).ready(function (){
+    
     $.ajax(
         {
             url:'/products/brand',
@@ -42,6 +55,8 @@ $(document).ready(function (){
                     k+='<td>' + (i+1) + '</td>';
                     k+= '<td>' + mainObj[i]["fields"]["brand_Name"] + '</td>';
                     k+= '<td>' + mainObj[i]["fields"]["Slug"] + '</td>';
+                    k+= '<td>' + '<button onclick="brandedit('+mainObj[i]["pk"]+')" type="button" class="btn btn-primary bmd-btn-icon"><i class="material-icons">edit</i></button>' + '</td>';
+                    k+= '<td>' + '<button onclick="brandDelete('+mainObj[i]["pk"]+')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">delete</i></button>' + '</td>';
                     k+= '</tr>';
                 }
                 k+='</tbody>';

@@ -18,6 +18,8 @@ $('#submit').click(function (){
                         k+='<td>' + (i+1) + '</td>';
                         k+= '<td>' + mainObj[i]["fields"]["Category_Name"] + '</td>';
                         k+= '<td>' + mainObj[i]["fields"]["Slug"] + '</td>';
+                        k+= '<td>' + '<button onclick="Categoryedit('+mainObj[i]["pk"]+')" type="button" class="btn btn-primary bmd-btn-icon"><i class="material-icons">edit</i></button>' + '</td>';
+                        k+= '<td>' + '<button onclick="CategoryDelete('+mainObj[i]["pk"]+')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">delete</i></button>' + '</td>';
                         k+= '</tr>';
                     }
                     k+='</tbody>';
@@ -27,6 +29,15 @@ $('#submit').click(function (){
              }
         )
 })
+
+function Categoryedit(id){
+
+    window.location= 'category/'+id;
+}
+function CategoryDelete(id){
+
+    window.location= 'category/'+id+'/delete';
+}
 $(document).ready(function (){
     $.ajax(
         {
@@ -42,6 +53,9 @@ $(document).ready(function (){
                     k+='<td>' + (i+1) + '</td>';
                     k+= '<td>' + mainObj[i]["fields"]["Category_Name"] + '</td>';
                     k+= '<td>' + mainObj[i]["fields"]["Slug"] + '</td>';
+                    k+= '<td>' + '<button onclick="Categoryedit('+mainObj[i]["pk"]+')" type="button" class="btn btn-primary bmd-btn-icon"><i class="material-icons">edit</i></button>' + '</td>';
+                    k+= '<td>' + '<button onclick="CategoryDelete('+mainObj[i]["pk"]+')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">delete</i></button>' + '</td>';
+
                     k+= '</tr>';
                 }
                 k+='</tbody>';
