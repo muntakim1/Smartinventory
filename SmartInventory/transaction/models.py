@@ -14,7 +14,6 @@ class Order(models.Model):
     qty = models.IntegerField()
     Rate = models.DecimalField(max_digits=20,decimal_places=2)
     amount = models.DecimalField(max_digits=20,decimal_places=2)
-    total_ammount = models.DecimalField(max_digits=20,decimal_places=2)
 
     paid_status = models.BooleanField()
 
@@ -27,7 +26,6 @@ class Purchases (models.Model):
     qty = models.IntegerField()
     Rate = models.DecimalField(max_digits=20,decimal_places=2)
     amount = models.DecimalField(max_digits=20,decimal_places=2)
-    total_ammount = models.DecimalField(max_digits=20,decimal_places=2)
     paid_status = models.BooleanField()
 
 class Sales(models.Model):
@@ -37,5 +35,4 @@ class Sales(models.Model):
     date=models.DateField(default=datetime.date.today)
     Rate = models.DecimalField(max_digits=20,decimal_places=2)
     amount = models.DecimalField(max_digits=20,decimal_places=2)
-    total_ammount = models.DecimalField(max_digits=20,decimal_places=2)
     paid_status = models.BooleanField()

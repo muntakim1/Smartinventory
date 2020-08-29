@@ -11,12 +11,19 @@
                     <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                   </div>
                   <p class="card-category">Sales</p>
-                  <h3 class="card-title">$34,245
+                  
+                  {% if total_sales.total_price is null %}
+                    <h3 class="card-title">$0
+                    {% else %}
+                    <h3 class="card-title">${{total_sales.total_price}}
+                  {% endif %}
+                    
+                  
                   </h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                     <i class="material-icons">date_range</i> Last 24 Hours
+                     <i class="material-icons">date_range</i> Last month
                   </div>
                 </div>
               </div>
@@ -28,11 +35,18 @@
                     <i class="material-icons">store</i>
                   </div>
                   <p class="card-category">Order</p>
-                  <h3 class="card-title">$34,245</h3>
+                  
+                  {% if total_order.total_price is Null %}
+                    <h3 class="card-title">$0</h3>
+                  {% else %}
+                  <h3 class="card-title">${{total_order.total_price}}</h3>
+                  {% endif %}
+                    
+                  
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">date_range</i> Last 24 Hours
+                    <i class="material-icons">date_range</i> Last month
                   </div>
                 </div>
               </div>
@@ -44,11 +58,18 @@
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                   </div>
                   <p class="card-category">Purchases </p>
-                  <h3 class="card-title">$34,245</h3>
+                  
+                  {% if total_purchase.total_price is null %}
+                  <h3 class="card-title">$0</h3>
+                    {% else %}
+                  <h3 class="card-title">${{total_purchase.total_price}}</h3>
+
+                  {% endif %}
+                    
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                     <i class="material-icons">date_range</i> Last 24 Hours
+                     <i class="material-icons">date_range</i> Last month
                   </div>
                 </div>
               </div>
@@ -60,11 +81,11 @@
                     <i class="fa fa-money"></i>
                   </div>
                   <p class="card-category">Revenue</p>
-                  <h3 class="card-title">$34,245</h3>
+                  <h3 class="card-title">${{total_revinue}}</h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">date_range</i> Last 24 Hours
+                    <i class="material-icons">date_range</i> Last month
                   </div>
                 </div>
               </div>

@@ -32,4 +32,6 @@ class ShopProfile(models.Model):
     city        = models.CharField(default="",max_length=50)
     phone       = models.CharField(default="",max_length=15)
     zipcode     = models.CharField(default="",max_length=10)
+    def __str__(self):
+        return self.shop_name
    

@@ -8,11 +8,11 @@
                 <div class="col-md-12">
                     <div class="card">
                       <div class="card-header card-header-primary">
-                        <h4 class="card-title">Add/Edit Sales</h4>
-                        <p class="card-category">Complete Sales</p>
+                        <h4 class="card-title">Add/Edit Shops</h4>
+                        <p class="card-category">Complete Shops</p>
                       </div>
                       <div class="card-body">
-                        <form>
+                     
                           <form method="POST">
                             {% csrf_token %}
                             {{ form.as_p }} 
@@ -29,8 +29,8 @@
                 <div class="col-md-12">
                   <div class="card">
                     <div class="card-header card-header-primary">
-                      <h4 class="card-title ">Product Sales</h4>
-                      <p class="card-category"> Sales transactions </p>
+                      <h4 class="card-title ">Shops</h4>
+                      <p class="card-category"> All shops </p>
                       <button onclick="Export()" class="btn btn-white pull-left" style="color: #9c27b0;">Export</button>
 
                       <div class="col-md-3 pull-right">

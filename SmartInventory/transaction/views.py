@@ -21,8 +21,6 @@ def order(requests):
         f = OrderForm()
     if requests.is_ajax():
         return JsonResponse({'order':order,'products':product})
-    else:
-        return render(requests,'pages/order.html',{'form':f})
 
     return render(requests,'pages/order.html',{'form':f})
     
@@ -59,8 +57,7 @@ def purchase(requests):
         f = PurchaseForm()
     if requests.is_ajax():
         return JsonResponse({'purchases':purchases,'products':product})
-    else:
-        return render(requests,'pages/Purchase.html',{'form':f})
+    
     return render(requests,'pages/Purchase.html',{'form':f})
     
 
@@ -98,8 +95,7 @@ def sales(requests):
         f = SalesForm()
     if requests.is_ajax():
         return JsonResponse({'sales':sales,'products':product,'shop':shop})
-    else:
-        return render(requests,'pages/Sales.html',{'form':f})
+
     return render(requests,'pages/Sales.html',{'form':f})
 
 def edit_sales(request,pk):
