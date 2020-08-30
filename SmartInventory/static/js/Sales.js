@@ -38,7 +38,7 @@ $(document).ready(function (){
                 k+= '<td>' + mainObj[i]["fields"]["qty"] + '</td>';
                 k+= '<td>' +'$'+ mainObj[i]["fields"]["Rate"] + '</td>';
                 k+= '<td>' +'$'+ mainObj[i]["fields"]["amount"] + '</td>';
-                k+= '<td>' +'$'+ mainObj[i]["fields"]["total_ammount"] + '</td>';
+                // k+= '<td>' +'$'+ mainObj[i]["fields"]["total_ammount"] + '</td>';
 
                 if(mainObj[i]["fields"]["paid_status"]){
                     
@@ -51,6 +51,7 @@ $(document).ready(function (){
                 
                 k+= '<td>' + '<button onclick="Salesedit('+mainObj[i]["pk"]+')" type="button" class="btn btn-primary bmd-btn-icon"><i class="material-icons">edit</i></button>' + '</td>';
                 k+= '<td>' + '<button onclick="SalesDelete('+mainObj[i]["pk"]+')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">delete</i></button>' + '</td>';
+                k+= '<td>' + '<button id="invoice" onclick="SalesInvoice('+mainObj[i]["pk"]+',\'sales\')" type="button" class="btn btn-danger bmd-btn-icon"><i class="material-icons">report</i></button>' + '</td>';
                 
 
 
@@ -66,6 +67,11 @@ $(document).ready(function (){
 
 })
 
+
+function SalesInvoice(id,value){
+    window.location = '/transactions/invoice/'+id+'/'+value;
+    url='/transactions/invoice/'+id+'/'+value;
+}
 
 
 function Export(){

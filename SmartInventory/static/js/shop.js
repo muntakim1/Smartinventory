@@ -30,7 +30,7 @@ $(document).ready(function (){
                 k+= '</tr>';
             } 
             k+='</tbody>';
-            document.getElementById('SalesTable').innerHTML = k;
+            document.getElementById('shopTable').innerHTML = k;
            
 
 
@@ -80,7 +80,7 @@ $('#submit').click(function(){
                 k+= '</tr>';
             } 
             k+='</tbody>';
-            document.getElementById('SalesTable').innerHTML = k;
+            document.getElementById('shopTable').innerHTML = k;
            
 
 
