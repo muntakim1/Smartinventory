@@ -14,6 +14,7 @@ def index(request):
 @login_required(login_url='/profile/login')
 def dashboard(requests):
     sales= Sales.objects.all().values_list('date','amount')
+    employees= Employee.objects.all()
     order= Order.objects.all().values_list('date','amount')
     purchases= Purchases.objects.all().values_list('date','amount')
     total_sales= Sales.objects.aggregate(total_price=Sum('amount'))
@@ -30,13 +31,15 @@ def dashboard(requests):
         total_revinue=revinue
     else:
         total_revinue=0
-
+    print(employees)
+    # emp = [e for e in employees]
     sale = [s for s in sales]
     orders =[o for o in order] 
     purchase=[purchas for purchas in purchases]
     if requests.is_ajax():
         return JsonResponse({'purchase':purchase,'sale':sale,'order':orders})
-    return render(requests,'pages/dashboard.html',{'total_sales':total_sales,'total_purchase':total_purchase,'total_order':total_order,'total_revinue':total_revinue})
+    return render(requests,'pages/dashboard.html',{'total_sales':total_sales,'total_purchase':total_purchase,
+                'total_order':total_order,'total_revinue':total_revinue,'employee':employees})
 
 def shop(requests):
     shop = serializers.serialize("json", ShopProfile.objects.all())

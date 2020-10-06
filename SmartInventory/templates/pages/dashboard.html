@@ -420,33 +420,22 @@
                       <th>ID</th>
                       <th>Name</th>
                       <th>Salary</th>
-                      <th>Country</th>
+                      <th>Shop</th>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Dakota Rice</td>
-                        <td>$36,738</td>
-                        <td>Niger</td>
+                      
+                        
+                        {% for e in employee  %}
+                        <tr>
+                          <td>{{e.pk}}</td>
+                        <td>{{e.full_name}}</td>
+                        <td>{{e.salary}}</td>
+                        <td>{{e.shop}}</td>
+                        
                       </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Minerva Hooper</td>
-                        <td>$23,789</td>
-                        <td>Curaçao</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Sage Rodriguez</td>
-                        <td>$56,142</td>
-                        <td>Netherlands</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>Philip Chaney</td>
-                        <td>$38,735</td>
-                        <td>Korea, South</td>
-                      </tr>
+                        {% endfor %}
+                          
+                        
                     </tbody>
                   </table>
                 </div>
