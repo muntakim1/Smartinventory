@@ -1,0 +1,86 @@
+{% include 'header/header.html' %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header card-header-primary">
+                        <h4 class="card-title">Add/Edit Employee</h4>
+                        <p class="card-category">Complete Employee</p>
+                      </div>
+                      <div class="card-body">
+                       
+                          <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }} 
+                           
+                         
+                          <button type="submit" class="btn btn-primary pull-right">Add</button>
+                          <div class="clearfix"></div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header card-header-primary">
+                      <h4 class="card-title ">Employee Data</h4>
+                      <p class="card-category"> Employee Information </p>
+                      <button onclick="Export()" class="btn btn-white pull-left" style="color: #9c27b0;">Export</button>
+
+                      <div class="col-md-3 pull-right">
+                        <div class="form-group" >
+                          <label class="bmd-label-floating">Search</label>
+                          <input type="text" id="search" class="form-control" style="color:white">
+                        </div>
+                      </div>
+                          <div class="clearfix"></div>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead class=" text-primary">
+                            
+                            <th>
+                              Serial No.
+                            </th>
+                            <th>
+                              Full Name 
+                            </th>
+                            <th>
+                              Address
+                            </th>
+                            <th>
+                              Birthday
+                            </th>
+                            <th>
+                              Join Date
+                            </th>
+                            <th>
+                              Designation
+                            </th>
+                            <th>
+                              Salary
+                            </th>
+                            <th>
+                              Shop ID
+                            </th>
+                           
+                          </thead>
+                          <tbody id="EmployeeTable">
+                           
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    </div>
+</div>
+
+{% include 'footer/footer.html' %}

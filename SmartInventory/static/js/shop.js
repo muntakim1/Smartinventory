@@ -12,7 +12,7 @@ $(document).ready(function (){
             for(i = 0;i < mainObj.length; i++){             
                 k+= '<tr>';
                 k+='<td>' + (i+1) + '</td>';
-                k+= '<td>' + mainObj[i]["fields"]["Manager_name"] + '</td>';
+                // k+= '<td>' + mainObj[i]["fields"]["Manager_name"] + '</td>';
                 k+= '<td>' + mainObj[i]["fields"]["shop_name"] + '</td>';
                 k+= '<td>' +mainObj[i]["fields"]["phone"] + '</td>';
                 k+= '<td>' + mainObj[i]["fields"]["address"] + '</td>';
@@ -63,7 +63,7 @@ $('#submit').click(function(){
             for(i = 0;i < mainObj.length; i++){             
                 k+= '<tr>';
                 k+='<td>' + (i+1) + '</td>';
-                k+= '<td>' + mainObj[i]["fields"]["Manager_name"] + '</td>';
+                // k+= '<td>' + mainObj[i]["fields"]["Manager_name"] + '</td>';
                 k+= '<td>' + mainObj[i]["fields"]["shop_name"] + '</td>';
                 k+= '<td>' +mainObj[i]["fields"]["phone"] + '</td>';
                 k+= '<td>' + mainObj[i]["fields"]["address"] + '</td>';

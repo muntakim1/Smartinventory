@@ -3,9 +3,10 @@ from django.http import JsonResponse
 from authentication.models import ShopProfile
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
-from .forms import ShopForm
+from .forms import ShopForm,EmployeeForm
 from django.db.models import Sum
 from transaction.models import Sales, Order,Purchases
+from .models import Employee
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -67,3 +68,35 @@ def edit_shop(requests,pk):
 def delete_shop(requests,pk):
     ShopProfile.objects.filter(pk=pk).delete()
     return redirect('shop')
+
+def Employees(requests):
+    employees = serializers.serialize("json", Employee.objects.all())
+    print(employees)
+    f= EmployeeForm()       
+    if requests.method == 'POST':
+        f = EmployeeForm(requests.POST)
+        if f.is_valid():
+            f.save()
+            return redirect('employee')
+    else:
+        f = EmployeeForm()
+    if requests.is_ajax():
+        return JsonResponse({'employees':employees})
+    return render(requests,'pages/employee.html',{'form':f})
+
+def edit_Employee(requests,pk):
+    instance = Employee.objects.get(id=pk)
+    form=EmployeeForm(instance=instance)
+    if request.method == 'POST':
+        form= EmployeeForm(request.POST,instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('employee')
+        else:
+            form= EmployeeForm(instance=instance)
+    
+    return render(request,'pages/edit_employee.html',{'form':form})
+
+def delete_Employee(requests,pk):
+    Employee.objects.filter(pk=pk).delete()
+    return redirect('employee')

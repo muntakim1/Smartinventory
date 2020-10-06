@@ -121,10 +121,15 @@ def Invoice(requests,pk,value):
     product = [x for x in product_obj ]
     shop_obj=ShopProfile.objects.all().values_list('pk','shop_name')
     shop = [x for x in shop_obj ]
+
     if(value=='purchase'):
         if requests.is_ajax():
             purchase = serializers.serialize("json", [Purchases.objects.get(pk=pk)], ensure_ascii=False)
             return JsonResponse({'invoice':purchase,'products':product})
+    if(value=='sales'):
+        if requests.is_ajax():
+            sales = serializers.serialize("json", [Sales.objects.get(pk=pk)], ensure_ascii=False)
+            return JsonResponse({'invoice':sales,'products':product, 'shop': shop})
     return render(requests,'pages/invoice.html')
 def Reports(requests):
 
