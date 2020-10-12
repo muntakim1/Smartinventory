@@ -8,6 +8,7 @@ $(document).ready(function () {
     $.ajax({
         url: '/employee',
         type: 'GET',
+        async:true,
         success: function (data) {
 
             

@@ -13,31 +13,43 @@ def index(request):
     
 @login_required(login_url='/profile/login')
 def dashboard(requests):
-    sales= Sales.objects.all().values_list('date','amount')
+    sales= Sales.objects.all().order_by('-id')[:10].values_list('date','amount')
     employees= Employee.objects.all()
-    order= Order.objects.all().values_list('date','amount')
-    purchases= Purchases.objects.all().values_list('date','amount')
+    order= Order.objects.all().order_by('-id')[:10].values_list('date','amount')
+    purchases= Purchases.objects.all().order_by('-id')[:10].values_list('date','amount')
     total_sales= Sales.objects.aggregate(total_price=Sum('amount'))
     total_purchase= Purchases.objects.aggregate(total_price=Sum('amount'))
     total_order= Order.objects.aggregate(total_price=Sum('amount'))
-    if total_sales['total_price'] is None or total_purchase['total_price'] is None or total_order['total_price'] is None:
+    total_revinue=0
+
+    if total_sales['total_price'] is None and total_purchase['total_price'] is None and total_order['total_price'] is None:
         total_sales['total_price']=0
         total_order['total_price']=0
         total_purchase['total_price']=0
+
+
+
     revinue=(float(total_sales['total_price']))-(float(total_purchase['total_price']))
     
-    total_revinue=0
+    print(revinue)
     if revinue>0:
         total_revinue=revinue
     else:
         total_revinue=0
-    print(employees)
+    # print(employees)
     # emp = [e for e in employees]
-    sale = [s for s in sales]
-    orders =[o for o in order] 
-    purchase=[purchas for purchas in purchases]
+    sale = [s for s,m in sales]
+    s_m = [m for s,m in sales]
+    saless = [{'date':sale},{'sales':s_m}]
+    order_s = [s for s,m in order]
+    o_m = [m for s,m in order]
+    orders = [{'date':order_s},{'order':o_m}]
+    purchase_s = [s for s,m in purchases]
+    p_m = [m for s,m in purchases]
+    purchase = [{'date':purchase_s},{'purchase':p_m}]
+
     if requests.is_ajax():
-        return JsonResponse({'purchase':purchase,'sale':sale,'order':orders})
+        return JsonResponse({'purchase':purchase,'sale':saless,'order':orders})
     return render(requests,'pages/dashboard.html',{'total_sales':total_sales,'total_purchase':total_purchase,
                 'total_order':total_order,'total_revinue':total_revinue,'employee':employees})
 

@@ -1,19 +1,4 @@
-/*!
 
- =========================================================
- * Material Dashboard - v2.1.2
- =========================================================
-
- * Product Page: https://www.creative-tim.com/product/material-dashboard
- * Copyright 2020 Creative Tim (http://www.creative-tim.com)
-
- * Designed by www.invisionapp.com Coded by www.creative-tim.com
-
- =========================================================
-
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
- */
 
 (function() {
   isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
@@ -50,6 +35,8 @@ var seq2 = 0,
   durations2 = 500;
 
 $(document).ready(function() {
+  
+
 
   $('body').bootstrapMaterialDesign();
 
@@ -183,85 +170,8 @@ md = {
     });
   },
 
-  initDocumentationCharts: function() {
-    if ($('#dailySalesChart').length != 0 && $('#websiteViewsChart').length != 0) {
-      /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
+  // 
 
-      dataDailySalesChart = {
-        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-        series: [
-          [12, 17, 7, 17, 23, 18, 38]
-        ]
-      };
-
-      optionsDailySalesChart = {
-        lineSmooth: Chartist.Interpolation.cardinal({
-          tension: 0
-        }),
-        low: 0,
-        high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-        chartPadding: {
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0
-        },
-      }
-
-      var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
-
-      var animationHeaderChart = new Chartist.Line('#websiteViewsChart', dataDailySalesChart, optionsDailySalesChart);
-    }
-  },
-
-
-  initFormExtendedDatetimepickers: function() {
-    $('.datetimepicker').datetimepicker({
-      icons: {
-        time: "fa fa-clock-o",
-        date: "fa fa-calendar",
-        up: "fa fa-chevron-up",
-        down: "fa fa-chevron-down",
-        previous: 'fa fa-chevron-left',
-        next: 'fa fa-chevron-right',
-        today: 'fa fa-screenshot',
-        clear: 'fa fa-trash',
-        close: 'fa fa-remove'
-      }
-    });
-
-    $('.datepicker').datetimepicker({
-      format: 'MM/DD/YYYY',
-      icons: {
-        time: "fa fa-clock-o",
-        date: "fa fa-calendar",
-        up: "fa fa-chevron-up",
-        down: "fa fa-chevron-down",
-        previous: 'fa fa-chevron-left',
-        next: 'fa fa-chevron-right',
-        today: 'fa fa-screenshot',
-        clear: 'fa fa-trash',
-        close: 'fa fa-remove'
-      }
-    });
-
-    $('.timepicker').datetimepicker({
-      //          format: 'H:mm',    // use this format if you want the 24hours timepicker
-      format: 'h:mm A', //use this format if you want the 12hours timpiecker with AM/PM toggle
-      icons: {
-        time: "fa fa-clock-o",
-        date: "fa fa-calendar",
-        up: "fa fa-chevron-up",
-        down: "fa fa-chevron-down",
-        previous: 'fa fa-chevron-left',
-        next: 'fa fa-chevron-right',
-        today: 'fa fa-screenshot',
-        clear: 'fa fa-trash',
-        close: 'fa fa-remove'
-
-      }
-    });
-  },
 
 
   initSliders: function() {
@@ -311,25 +221,37 @@ md = {
 
     if ($('#dailySalesChart').length != 0 || $('#completedTasksChart').length != 0 || $('#websiteViewsChart').length != 0) {
       /* ----------==========     Daily Sales Chart initialization    ==========---------- */
-
-      dataDailySalesChart = {
-        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-        series: [
-          [12, 17, 7, 17, 23, 18, 38]
-        ]
-      };
+      var sales_date;
+      var sales_;
+      $.ajax({
+        type: "GET",
+        url: '/dashboard',
+        dataType: 'json',
+       
+     
+        success: function (data) {
+      
+       
+        dataDailySalesChart = {
+          labels: data.sale[0].date,
+          series: [
+            data.sale[1].sales
+          ]
+        };
+   
+    console.log(Math.max(data.sale[1].sales))
 
       optionsDailySalesChart = {
         lineSmooth: Chartist.Interpolation.cardinal({
           tension: 0
         }),
         low: 0,
-        high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        high:  1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
         chartPadding: {
           top: 0,
           right: 0,
           bottom: 0,
-          left: 0
+          left: 10
         },
       }
 
@@ -341,70 +263,54 @@ md = {
 
       /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
-      dataCompletedTasksChart = {
-        labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
+      dataOrdersChart = {
+        labels: data.order[0].date,
         series: [
-          [230, 750, 450, 300, 280, 240, 200, 190]
+          data.order[1].order
+        ]
+      };
+      console.log(Math.max(data.purchase[1].purchase))
+      dataPurchaseChart = {
+        labels: data.purchase[0].date,
+        series: [
+          data.purchase[1].purchase
         ]
       };
 
-      optionsCompletedTasksChart = {
+      optionsPurchaseChart = {
         lineSmooth: Chartist.Interpolation.cardinal({
           tension: 0
         }),
         low: 0,
-        high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        high: Math.max(data.purchase[1].purchase)+Math.max(data.purchase[1].purchase)/2, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
         chartPadding: {
           top: 0,
           right: 0,
           bottom: 0,
-          left: 0
+          left: 10
+        }
+      }
+      optionsOrderChart = {
+        lineSmooth: Chartist.Interpolation.cardinal({
+          tension: 0
+        }),
+        low: 0,
+        high: Math.max(data.order[1].order), // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        chartPadding: {
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 10
         }
       }
 
-      var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
-      var websiteViewsChart1 = new Chartist.Line('#websiteViewsChart1',dataCompletedTasksChart,optionsCompletedTasksChart)
+      var completedTasksChart = new Chartist.Line('#DailyOrders',  dataPurchaseChart, optionsPurchaseChart);
+      var websiteViewsChart1 = new Chartist.Line('#Purchases',dataOrdersChart,optionsOrderChart)
       md.startAnimationForLineChart(websiteViewsChart1)
       // start animation for the Completed Tasks Chart - Line Chart
       md.startAnimationForLineChart(completedTasksChart);
+    }})
 
-
-      /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
-
-      var dataWebsiteViewsChart = {
-        labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-        series: [
-          [542, 443, 320, 780, 553, 453, 26, 434, 68, 610, 756, 895]
-
-        ]
-      };
-      var optionsWebsiteViewsChart = {
-        axisX: {
-          showGrid: false
-        },
-        low: 0,
-        high: 1000,
-        chartPadding: {
-          top: 0,
-          right: 5,
-          bottom: 0,
-          left: 0
-        }
-      };
-      var responsiveOptions = [
-        ['screen and (max-width: 640px)', {
-          seriesBarDistance: 5,
-          axisX: {
-            labelInterpolationFnc: function(value) {
-              return value[0];
-            }
-          }
-        }]
-      ];
-      var websiteViewsChart = Chartist.Bar('#websiteViewsChart', dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
-
-      //start animation for the Emails Subscription Chart
-      md.startAnimationForBarChart(websiteViewsChart);
     }
   },
 
